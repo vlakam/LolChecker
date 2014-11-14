@@ -1,0 +1,28 @@
+﻿Построение начато 13.11.2014 16:42:05.
+     1>Проект "C:\Users\Exclumice\documents\visual studio 2012\Projects\Ivanich\Ivanich\Ivanich.vcxproj" в узле 2 (целевые объекты Build).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /Zi /clr /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /EHa /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib "..\..\..\..\..\Downloads\LoLChecker-master\lol_checker\CList.cpp" "..\..\..\..\..\Downloads\LoLChecker-master\lol_checker\FileIO.cpp" captcha.cpp CHTTP.cpp main.cpp FileReader.cpp
+         CList.cpp
+         FileIO.cpp
+         captcha.cpp
+         CHTTP.cpp
+         main.cpp
+     1>main.cpp(10): warning C4829: Возможно, неправильные параметры функции main. Рекомендуемый вариант - "int main(Platform::Array<Platform::String^>^ argv)"
+         FileReader.cpp
+     1>FileReader.cpp(27): warning C4018: >=: несоответствие типов со знаком и без знака
+         Создание кода...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Exclumice\documents\visual studio 2012\Projects\Ivanich\Release\Ivanich.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /ASSEMBLYRESOURCE:Release\Ivanich.MainForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Exclumice\documents\visual studio 2012\Projects\Ivanich\Release\Ivanich.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /SAFESEH Release\CList.obj
+         Release\FileIO.obj
+         Release\captcha.obj
+         Release\CHTTP.obj
+         Release\main.obj
+         Release\FileReader.obj
+         "Release\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
+         LINK : указан параметр /LTCG, но не требуется создание кода; удалите /LTCG из командной строки компоновки для повышения производительности компоновщика
+         Ivanich.vcxproj -> C:\Users\Exclumice\documents\visual studio 2012\Projects\Ivanich\Release\Ivanich.exe
+     1>Построение проекта "C:\Users\Exclumice\documents\visual studio 2012\Projects\Ivanich\Ivanich\Ivanich.vcxproj" завершено (целевые объекты Build).
+
+Построение успешно завершено.
+
+Затраченное время: 00:00:09.81
