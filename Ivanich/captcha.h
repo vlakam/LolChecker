@@ -24,6 +24,7 @@ public:
 		std::string strPassword;
 		std::string strSummonerName;
 		int iLvl;
+		std::string id;
 		std::string strUnverified;
 	};
 
@@ -52,7 +53,7 @@ public:
 
 	void SetCaptcha(std::string strAnswer) { this->captcha.strAnswer = strAnswer; }
 	int GetLastErrorCode() { return this->lastErrorCode; }
-	int GetLevel();
+	void GetData();
 
 private:
 

@@ -48,6 +48,8 @@ namespace Ivanich {
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Button^  button4;
+	private: System::Windows::Forms::Button^  button5;
+
 
 	private:
 		/// <summary>
@@ -71,6 +73,7 @@ namespace Ivanich {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -94,7 +97,7 @@ namespace Ivanich {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(116, 174);
+			this->label1->Location = System::Drawing::Point(116, 212);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(35, 13);
 			this->label1->TabIndex = 2;
@@ -138,7 +141,7 @@ namespace Ivanich {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 174);
+			this->label2->Location = System::Drawing::Point(10, 212);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(0, 13);
 			this->label2->TabIndex = 6;
@@ -153,12 +156,23 @@ namespace Ivanich {
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
+			// button5
+			// 
+			this->button5->Location = System::Drawing::Point(119, 177);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(204, 23);
+			this->button5->TabIndex = 8;
+			this->button5->Text = L"Посмотреть профиль на LOLKING";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
+			// 
 			// MyForm
 			// 
 			this->AcceptButton = this->button1;
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(342, 230);
+			this->ClientSize = System::Drawing::Size(342, 273);
+			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->button3);
@@ -191,12 +205,14 @@ namespace Ivanich {
 					 if(fileReader->is_exists())
 					 {
 						 Captcha::LoginResponse Response = captcha->CheckLogin(fileReader->getCurrent());
+						 this->captcha->GetData();
+
 						 String^ NameString = gcnew String(captcha->GoodAcc.strUsername.c_str());
 						 String^ PasswordString = gcnew String(captcha->GoodAcc.strPassword.c_str());
 
 						 if(Response.strSuccess != "false")
 						 {
-							 this->label1->Text = "Аккаунт рабочий. Уровень: " + this->captcha->GetLevel() + "\nАккаунт: " + NameString + ":" + PasswordString;
+							 this->label1->Text = "Аккаунт рабочий. Уровень: " + this->captcha->GoodAcc.iLvl + "\nАккаунт: " + NameString + ":" + PasswordString;
 
 							 Clipboard::SetDataObject(NameString + ":" + PasswordString, true);
 						 }
@@ -281,6 +297,12 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 			 else
 			 {
 				 this->label1->Text = "Невозможно сменить данные.";
+			 }
+		 }
+private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
+			 if(!this->captcha->GoodAcc.id.empty())
+			 {
+				System::Diagnostics::Process::Start("http://lolking.net/summoner/euw/" + (String^) gcnew String(this->captcha->GoodAcc.id.c_str()));
 			 }
 		 }
 };

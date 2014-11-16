@@ -84,7 +84,7 @@ std::string Captcha::GetCaptcha()
 
 	return strPicPath;
 }
-int Captcha::GetLevel()
+void Captcha::GetData()
 {
 	std::string request = "/api/lol/euw/v1.4/summoner/by-name/" + this->GoodAcc.strSummonerName + "?api_key=870b5b86-95ec-48be-bfab-0e9852323ab3";
 	if(this->HTTP->IsOpen() && this->HTTP->Connect(L"euw.api.pvp.net",443))
@@ -92,24 +92,28 @@ int Captcha::GetLevel()
 		if (this->HTTP->SendRequest(L"GET", StringToWString(request),L"",""))
 		{
 			std::string strResponse = reinterpret_cast<const char*>(this->HTTP->GetResponse().c_str());
-			DWORD lvl = strResponse.find("\"summonerLevel\":") + 16,
-			dwSuccessEnd = strResponse.find(",", lvl);
-			std::string result = strResponse.substr(lvl, dwSuccessEnd - lvl);
+			std::string summonerLevel = strResponse.substr(strResponse.find("\"summonerLevel\":") + 16, strResponse.size());
+			summonerLevel = summonerLevel.substr(0, summonerLevel.find(","));
+
+			std::string summonerId = strResponse.substr(strResponse.find("\"id\":") + 5, strResponse.size());
+			summonerId = summonerId.substr(0, summonerId.find(","));
+			
 			std::cout << strResponse << std::endl;
+			
 			int res;
+			
 			try
 			{
-				res = std::stoi(result);
+				this->GoodAcc.iLvl = std::stoi(summonerLevel);
+				this->GoodAcc.id = summonerId;
 			}
 			catch(std::exception e)
 			{
 				std::cout << e.what() << std::endl;
-				res = -1;
+				this->GoodAcc.iLvl = -1;
 			}
-			return res;
 		}
 	}
-	return -1;
 }
 Captcha::ChangeDataStruct Captcha::ChangeData(std::string newDataPassword, std::string newDataMail)
 {
