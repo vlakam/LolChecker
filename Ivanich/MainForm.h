@@ -83,7 +83,7 @@ namespace Ivanich {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"Проверить";
+			this->button1->Text = L"Check";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -119,7 +119,7 @@ namespace Ivanich {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(123, 23);
 			this->button2->TabIndex = 4;
-			this->button2->Text = L"Следующий аккаунт";
+			this->button2->Text = L"Next in list";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
@@ -152,7 +152,7 @@ namespace Ivanich {
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(204, 23);
 			this->button4->TabIndex = 7;
-			this->button4->Text = L"Изменить данные аккаунта";
+			this->button4->Text = L"Change email for mine";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
@@ -162,7 +162,7 @@ namespace Ivanich {
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(204, 23);
 			this->button5->TabIndex = 8;
-			this->button5->Text = L"Посмотреть профиль на LOLKING";
+			this->button5->Text = L"Check profile on LOLKING";
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
 			// 
@@ -212,13 +212,13 @@ namespace Ivanich {
 
 						 if(Response.strSuccess != "false")
 						 {
-							 this->label1->Text = "Аккаунт рабочий. Уровень: " + this->captcha->GoodAcc.iLvl + "\nАккаунт: " + NameString + ":" + PasswordString;
+							 this->label1->Text = "Password correct. Level: " + this->captcha->GoodAcc.iLvl + "\nAcc: " + NameString + ":" + PasswordString;
 
 							 Clipboard::SetDataObject(NameString + ":" + PasswordString, true);
 						 }
 						 else
 						 {
-							 this->label1->Text = "Аккаунт не работает.";
+							 this->label1->Text = "Can't login. Check console.";
 						 }
 
 						 std::string getCaptcha = captcha->GetCaptcha();
@@ -229,17 +229,17 @@ namespace Ivanich {
 
 						 String^ VerifyString = gcnew String(this->captcha->GoodAcc.strUnverified.c_str());
 
-						 this->label2->Text = (VerifyString == "true") ? "(Неподтвержден)" : "(Подтвержден)";
+						 this->label2->Text = (VerifyString == "true") ? "(Mail validated)" : "(Mail not validated. U can change it)";
 						 this->label2->ForeColor = (VerifyString == "true") ? Color::Green : Color::Red;
 					 }
 					 else
 					 {
-						 this->label1->Text = "Загрузите список аккаунтов.";
+						 this->label1->Text = "Load the file with accs and press next.";
 					 }
 				 }
 				 else
 				 {
-					 this->label1->Text = "Загрузите файл!";
+					 this->label1->Text = "Load the file!";
 				 }
 			 }
 	private: System::Void pictureBox1_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
@@ -252,7 +252,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 			 {
 				 UserData nextLine = fileReader->getNext();
 
-				 std::string string = "Проверяем -> " + nextLine.username + ":" + nextLine.password;
+				 std::string string = "Checking -> " + nextLine.username + ":" + nextLine.password;
 
 				 String^ ButtonString = gcnew String(string.c_str());
 
@@ -261,7 +261,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 			 }
 			 else
 			 {
-				 this->label1->Text = "Загрузите файл!";
+				 this->label1->Text = "Load a file!";
 			 }
 		 }
 private: System::Void openFileDialog1_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
@@ -288,15 +288,15 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 				 this->label1->Text = (String^) gcnew String(data.message.c_str());
 				 if(data.success)
 				 {
-					String^ newStr = gcnew String((captcha->GoodAcc.strUsername + ":" + newPassword + "\nЭлектронная почта:" + data.newMail).c_str());
-					this->label1->Text = "Данные аккаунта изменены." + "\n" + newStr;
+					String^ newStr = gcnew String((captcha->GoodAcc.strUsername + ":" + newPassword + "\nMail set:" + data.newMail).c_str());
+					this->label1->Text = "Succesfully changed email." + "\n" + newStr;
 					Clipboard::SetDataObject(newStr, true);
 					captcha->GoodAcc.strPassword = newPassword;
 				 }
 			 }
 			 else
 			 {
-				 this->label1->Text = "Невозможно сменить данные.";
+				 this->label1->Text = "Failed to change email.";
 			 }
 		 }
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {

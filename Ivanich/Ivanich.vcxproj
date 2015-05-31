@@ -81,20 +81,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\Downloads\LoLChecker-master\lol_checker\CList.cpp" />
-    <ClCompile Include="..\..\..\..\..\Downloads\LoLChecker-master\lol_checker\FileIO.cpp" />
     <ClCompile Include="captcha.cpp" />
     <ClCompile Include="CHTTP.cpp" />
+    <ClCompile Include="CList.cpp" />
+    <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="FileReader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Downloads\LoLChecker-master\lol_checker\CHTTP.h" />
-    <ClInclude Include="..\..\..\..\..\Downloads\LoLChecker-master\lol_checker\CList.h" />
-    <ClInclude Include="..\..\..\..\..\Downloads\LoLChecker-master\lol_checker\FileIO.h" />
     <ClInclude Include="captcha.h" />
+    <ClInclude Include="CHTTP.h" />
+    <ClInclude Include="CList.h" />
+    <ClInclude Include="FileIO.h" />
     <ClInclude Include="FileReader.h" />
-    <ClInclude Include="main.h" />
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
