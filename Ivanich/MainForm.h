@@ -12,7 +12,7 @@ namespace Ivanich {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для MyForm
+	/// Г‘ГўГ®Г¤ГЄГ  Г¤Г«Гї MyForm
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
@@ -21,13 +21,13 @@ namespace Ivanich {
 		{
 			InitializeComponent();
 			//
-			//TODO: добавьте код конструктора
+			//TODO: Г¤Г®ГЎГ ГўГјГІГҐ ГЄГ®Г¤ ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г°Г 
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// ГЋГ±ГўГ®ГЎГ®Г¤ГЁГІГј ГўГ±ГҐ ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГ¬Г»ГҐ Г°ГҐГ±ГіГ°Г±Г».
 		/// </summary>
 		~MyForm()
 		{
@@ -53,14 +53,14 @@ namespace Ivanich {
 
 	private:
 		/// <summary>
-		/// Требуется переменная конструктора.
+		/// Г’Г°ГҐГЎГіГҐГІГ±Гї ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г Гї ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г°Г .
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Обязательный метод для поддержки конструктора - не изменяйте
-		/// содержимое данного метода при помощи редактора кода.
+		/// ГЋГЎГїГ§Г ГІГҐГ«ГјГ­Г»Г© Г¬ГҐГІГ®Г¤ Г¤Г«Гї ГЇГ®Г¤Г¤ГҐГ°Г¦ГЄГЁ ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г°Г  - Г­ГҐ ГЁГ§Г¬ГҐГ­ГїГ©ГІГҐ
+		/// Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ Г¤Г Г­Г­Г®ГЈГ® Г¬ГҐГІГ®Г¤Г  ГЇГ°ГЁ ГЇГ®Г¬Г®Г№ГЁ Г°ГҐГ¤Г ГЄГІГ®Г°Г  ГЄГ®Г¤Г .
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -134,7 +134,7 @@ namespace Ivanich {
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(75, 23);
 			this->button3->TabIndex = 5;
-			this->button3->Text = L"Файл...";
+			this->button3->Text = L"Г”Г Г©Г«...";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 			// 
@@ -284,7 +284,8 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 			 if(captcha->GoodAcc.strUnverified == "true")
 			 {
 				 std::string newPassword = fileReader->getRandom(10, true);
-				 Captcha::ChangeDataStruct data = captcha->ChangeData(newPassword, captcha->GoodAcc.strUsername + fileReader->getRandom(4, false) + "@shittywizzard.me");
+//CHANGE EMAIL TO YOURS HERE
+				 Captcha::ChangeDataStruct data = captcha->ChangeData(newPassword, captcha->GoodAcc.strUsername + fileReader->getRandom(4, false) + "@yourmail.here");
 				 this->label1->Text = (String^) gcnew String(data.message.c_str());
 				 if(data.success)
 				 {
