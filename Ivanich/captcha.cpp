@@ -86,7 +86,7 @@ std::string Captcha::GetCaptcha()
 }
 void Captcha::GetData()
 {
-	std::string request = "/api/lol/euw/v1.4/summoner/by-name/" + this->GoodAcc.strSummonerName + "?api_key=870b5b86-95ec-48be-bfab-0e9852323ab3";
+	std::string request = "/api/lol/euw/v1.4/summoner/by-name/" + this->GoodAcc.strSummonerName + "?api_key=<INPUT YOUR API KEY HERE>";
 	if(this->HTTP->IsOpen() && this->HTTP->Connect(L"euw.api.pvp.net",443))
 	{
 		if (this->HTTP->SendRequest(L"GET", StringToWString(request),L"",""))
